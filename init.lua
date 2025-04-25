@@ -91,7 +91,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
-vim.g.have_nerd_font = false
+vim.g.have_nerd_font = true
 
 -- [[ Setting options ]]
 -- See `:help vim.opt`
@@ -102,7 +102,7 @@ vim.g.have_nerd_font = false
 vim.opt.number = true
 -- You can also add relative line numbers, to help with jumping.
 --  Experiment for yourself to see if you like it!
--- vim.opt.relativenumber = true
+vim.opt.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = 'a'
@@ -187,6 +187,26 @@ vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' }
 
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
+
+-- NOTE: SEBAS SPECIAL CHANGES --
+
+vim.keymap.set('i', 'jk', '<ESC>', {
+  noremap = true, -- non recursive mapping
+  silent = true,
+  desc = 'Escape -n mode with jk', -- Description for which-key or :map
+})
+
+vim.keymap.set('i', 'JK', '<ESC>', {
+  noremap = true, -- non recursive mapping
+  silent = true,
+  desc = 'Escape -n mode with jk', -- Description for which-key or :map
+})
+
+-- Write and quit
+vim.keymap.set('n', '<leader>wq', '<cmd>wq<CR>', { desc = 'Write and quit buffer', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>qq', '<cmd>q!<CR>', { desc = 'Quit buffer without saving', noremap = true, silent = true })
+
+-- NOTE: END OF SEBAS ESPECIAL CHANGES
 --
 --  See `:help wincmd` for a list of all window commands
 vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
@@ -232,8 +252,7 @@ vim.opt.rtp:prepend(lazypath)
 --    :Lazy
 --
 --  You can press `?` in this menu for help. Use `:q` to close the window
---
---  To update plugins you can run
+-- To update plugins you can run
 --    :Lazy update
 --
 -- NOTE: Here is where you install your plugins.
@@ -836,7 +855,7 @@ require('lazy').setup({
       appearance = {
         -- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
         -- Adjusts spacing to ensure icons are aligned
-        nerd_font_variant = 'mono',
+        nerd_font_variant = 'normal',
       },
 
       completion = {

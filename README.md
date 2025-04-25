@@ -1,4 +1,4 @@
-# kickstart.nvim
+# Nickstart.nvim
 
 ## Introduction
 
